@@ -1,11 +1,10 @@
 import datetime
-
-import pymssql
 import xml.etree.ElementTree as ET
-from datetime import date
 import os
 import schedule
 import time
+from datetime import date
+from library.getConnection import getConnection
 
 # Названия контактов FIO, которые не добавляются в справочник
 NO_NEED = ['Вакансия',
@@ -35,7 +34,9 @@ GROUP_BLR = {"1": "ЦА",
              "5": "Гродненская_обл",
              "6": "Минская_обл",
              "7": "Могилевская_обл",
-             "8": "Минск"
+             "8": "Минск",
+             "9": "ИПКиПК",
+             "11": "НПЦ",
              }
 
 LIST_OF_COLUMNS = ["Name",
@@ -70,22 +71,6 @@ LIST_OF_OUTPUT_FILES = [
         'longName': False,
     },
 ]
-
-
-def conAndGetData(data=[], *args, **kwargs):
-    try:
-        connection = pymssql.connect(server='10.10.12.150', user='sa', password='3086993GKSE', database='PhoneBookGKSE')
-        cursor = connection.cursor()
-        cursor.execute(
-            f'SELECT FIO, num_obl, WorkPhone FROM BookNumbers WHERE WorkPhone IS NOT NULL AND FIO IS NOT NULL')
-        data = cursor.fetchall()
-    except Exception as e:
-        print('Ошибка подключения и получения данных из базы данных: ', e)
-    finally:
-        cursor.close()
-        connection.close()
-
-    return data
 
 
 def createXMLFile(fileName, *args, **kwargs):
@@ -195,9 +180,15 @@ def addContactToXML(d, root_f, only_ca=False, long_name=True, *args, **kwargs):
 def mainConverter(data=[], *args, **kwargs):
     try:
         try:
-            data = conAndGetData()
+            cursor, connection = getConnection()
+            cursor.execute(
+                f'SELECT FIO, num_obl, WorkPhone FROM BookNumbers WHERE WorkPhone IS NOT NULL AND FIO IS NOT NULL')
+            data = cursor.fetchall()
         except Exception as e:
             print('001 Ошибка соединения и получения данных из базы: ', e)
+        finally:
+            cursor.close()
+            connection.close()
 
         try:
             data = convertPhonebookDataToList(data)

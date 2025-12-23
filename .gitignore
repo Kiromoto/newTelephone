@@ -2,7 +2,13 @@
 .idea
 
 output
+output/
+output/*
 xml
+xml/
 
+*.env
 .env
+
+
 

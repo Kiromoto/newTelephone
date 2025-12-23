@@ -1,6 +1,12 @@
 import pymssql
+import os
+from dotenv import load_dotenv
 
-def getConnection(server='10.10.12.150', user='sa', password='3086993GKSE', database='PhoneBookGKSE', *args, **kwargs):
+
+
+load_dotenv()
+
+def getConnection(server=os.getenv('server'), user=os.getenv('user'), password=os.getenv('password'), database=os.getenv('database'), *args, **kwargs):
     try:
         conn = pymssql.connect(server=server, user=user, password=password, database=database)
         cur = conn.cursor()

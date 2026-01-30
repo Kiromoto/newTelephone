@@ -1,8 +1,8 @@
 import datetime
 import xml.etree.ElementTree as ET
-import os
-import schedule
-import time
+# import os
+# import schedule
+# import time
 from datetime import date
 from library.getConnection import getConnection
 

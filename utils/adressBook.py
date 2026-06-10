@@ -1,4 +1,6 @@
-content = """aria-label=" Борисик Евгений Витальевич  <ev.borisik@mail.gkse>. Press delete to remove this chip." ng-focus="!$mdChipsCtrl.readonly &amp;&amp; $mdChipsCtrl.selectChip($index)" md-chip-transclude="$mdChipsCtrl.chipContentsTemplate"><md-chip-template> Борисик Евгений Витальевич  &lt;ev.borisik@mail.gkse&gt;</md-chip-template></div>          <!----><div
+content = """
+aria-label=" Борисик Евгений Витальевич  <ev.borisik@mail.gkse>. Press delete to remove this chip." ng-focus="!$mdChipsCtrl.readonly &amp;&amp; $mdChipsCtrl.selectChip($index)" md-chip-transclude="$mdChipsCtrl.chipContentsTemplate"><md-chip-template> Борисик Евгений Витальевич  &lt;ev.borisik@mail.gkse&gt;</md-chip-template></div>          <!----><div
+
 """
 
 

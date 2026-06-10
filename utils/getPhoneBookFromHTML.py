@@ -1,7 +1,7 @@
 from adressBook import content, clear_book
 
 # result = []
-
+#
 # position_end = content.find("@mail.gkse", 0)
 # while position_end != -1:
 #     position_start = content[0:position_end].find("aria-label=")
@@ -14,7 +14,7 @@ from adressBook import content, clear_book
 #             result.append(s)
 #     content = content[position_end + 10:]
 #     position_end = content.find("@mail.gkse", 0)
-
+#
 # print(result)
 # print(len(result))
 

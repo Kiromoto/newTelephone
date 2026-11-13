@@ -70,6 +70,12 @@ LIST_OF_OUTPUT_FILES = [
         "onlyCA": True,
         'longName': False,
     },
+
+    # {
+    #     "path": rf"//10.10.13.200/contact_ALL_{date.today().strftime("%Y_%m_%d")}.xml",
+    #     "onlyCA": False,
+    #     'longName': True,
+    # },
 ]
 
 
@@ -210,6 +216,11 @@ def mainConverter(data=[], *args, **kwargs):
                 print(
                     f'004 Ошибка создания и добавления данных в файл справочника file: {file["path"]} only_ca: {file["onlyCA"]} long_name={file["longName"]}:: ',
                     e)
+            else:
+                print(
+                    f'Данные в файл справочника добавлены успешно!!! file: {file["path"]} only_ca: {file["onlyCA"]} long_name={file["longName"]}')
+            finally:
+                print(f'Finish file: {file["path"]}')
 
     except Exception as e:
         print('Ошибка обработки полученных данных и формирования справочника: ', e)
